@@ -1,0 +1,43 @@
+# ==========================================
+# Robots.txt for StackLookup.net
+# Optimizing Crawler Indexing, AEO, and GEO
+# ==========================================
+
+User-agent: *
+Allow: /
+Disallow: /api/scan # Keep backend scanning API isolated from generic scrapers
+Disallow: /api/simulate # Keep sandbox emulator isolated from generic scrapers
+
+# Explicitly Welcome and Guide AI Engines for Answers and Chat Citations (AEO/GEO)
+User-agent: Google-Extended
+Allow: /
+Allow: /directory
+Allow: /blog
+Allow: /about
+
+User-agent: GPTBot
+Allow: /
+Allow: /directory
+Allow: /blog
+Allow: /about
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /directory
+Allow: /blog
+Allow: /about
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /directory
+Allow: /blog
+Allow: /about
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /directory
+Allow: /blog
+Allow: /about
+
+# Declare Site XML Map
+Sitemap: https://stacklookup.net/sitemap.xml

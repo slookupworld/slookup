@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A73E8" />
+      <stop offset="100%" stop-color="#1557B0" />
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E8EAED" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background squircle (matching Google Material design principles) -->
+  <rect width="128" height="128" rx="28" fill="url(#bgGrad)" />
+
+  <!-- Microchip connection lines representing website crawler node scan -->
+  <line x1="22" y1="50" x2="36" y2="50" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  <line x1="22" y1="78" x2="36" y2="78" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  <line x1="92" y1="50" x2="106" y2="50" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  <line x1="92" y1="78" x2="106" y2="78" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  
+  <line x1="50" y1="22" x2="50" y2="36" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  <line x1="78" y1="22" x2="78" y2="36" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  <line x1="50" y1="92" x2="50" y2="106" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  <line x1="78" y1="92" x2="78" y2="106" stroke="url(#chipGrad)" stroke-width="5" stroke-linecap="round" />
+  
+  <!-- Modern Circular Nodes at connection endpoints -->
+  <circle cx="18" cy="50" r="4.5" fill="#FFFFFF" />
+  <circle cx="18" cy="78" r="4.5" fill="#FFFFFF" />
+  <circle cx="110" cy="50" r="4.5" fill="#FFFFFF" />
+  <circle cx="110" cy="78" r="4.5" fill="#FFFFFF" />
+  
+  <circle cx="50" cy="18" r="4.5" fill="#FFFFFF" />
+  <circle cx="78" cy="18" r="4.5" fill="#FFFFFF" />
+  <circle cx="50" cy="110" r="4.5" fill="#FFFFFF" />
+  <circle cx="78" cy="110" r="4.5" fill="#FFFFFF" />
+
+  <!-- Outer central CPU frame -->
+  <rect x="36" y="36" width="56" height="56" rx="12" fill="none" stroke="url(#chipGrad)" stroke-width="6" />
+
+  <!-- Center block / Silicon core -->
+  <rect x="48" y="48" width="32" height="32" rx="7" fill="#FFFFFF" />
+  
+  <!-- Diagnostic lookup magnifying symbol embedded in central silicon core -->
+  <path d="M56 68 L62 62 M62 54 A4 4 0 1 1 54 54 A4 4 0 0 1 62 54 Z" fill="none" stroke="#1A73E8" stroke-width="4" stroke-linecap="round" />
+</svg>
