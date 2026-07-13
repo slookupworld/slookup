@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Cpu, Chrome, ShieldCheck, Heart, X, Mail, FileText, CheckCircle, Send } from 'lucide-react';
+import { Cpu, Chrome, ShieldCheck, Heart, X, Mail, FileText, CheckCircle, Send, AlertCircle } from 'lucide-react';
 
 interface FooterProps {
   setTab: (tab: string) => void;
@@ -17,15 +17,42 @@ export default function Footer({ setTab }: FooterProps) {
   const [message, setMessage] = useState('');
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError(null);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/hello.stacklookup@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ 
+          name, 
+          email, 
+          message,
+          _subject: `New StackLookup Contact Form Submission from ${name}`
+        })
+      });
+      if (response.ok) {
+        setContactSubmitted(true);
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        const errData = await response.json();
+        setSubmitError(errData.message || 'Failed to send your message via FormSubmit. Please try again.');
+      }
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setSubmitError('An unexpected networking error occurred. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setContactSubmitted(true);
-    }, 800);
+    }
   };
 
   return (
@@ -140,6 +167,7 @@ export default function Footer({ setTab }: FooterProps) {
               onClick={() => {
                 setActiveModal('contact');
                 setContactSubmitted(false);
+                setSubmitError(null);
               }}
               className="hover:text-[#1A73E8] cursor-pointer transition-colors duration-200"
               id="footer-link-contact"
@@ -148,7 +176,10 @@ export default function Footer({ setTab }: FooterProps) {
             </button>
             <span className="text-[#DADCE0] select-none">|</span>
             <button 
-              onClick={() => setActiveModal('privacy')}
+              onClick={() => {
+                setActiveModal('privacy');
+                setSubmitError(null);
+              }}
               className="hover:text-[#1A73E8] cursor-pointer transition-colors duration-200"
               id="footer-link-privacy"
             >
@@ -156,7 +187,10 @@ export default function Footer({ setTab }: FooterProps) {
             </button>
             <span className="text-[#DADCE0] select-none">|</span>
             <button 
-              onClick={() => setActiveModal('terms')}
+              onClick={() => {
+                setActiveModal('terms');
+                setSubmitError(null);
+              }}
               className="hover:text-[#1A73E8] cursor-pointer transition-colors duration-200"
               id="footer-link-terms"
             >
@@ -188,6 +222,7 @@ export default function Footer({ setTab }: FooterProps) {
                 onClick={() => {
                   setActiveModal(null);
                   setContactSubmitted(false);
+                  setSubmitError(null);
                 }}
                 className="p-1 rounded-full text-[#5F6368] hover:bg-[#F1F3F4] hover:text-[#202124] transition-all cursor-pointer"
                 aria-label="Close modal"
@@ -248,6 +283,12 @@ export default function Footer({ setTab }: FooterProps) {
                           className="w-full rounded-xl border border-[#DADCE0] bg-white px-4 py-2.5 text-xs sm:text-sm text-[#202124] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8] transition-all resize-none"
                         />
                       </div>
+                      {submitError && (
+                        <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-[#EA4335] font-medium flex items-center space-x-2">
+                          <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                          <span>{submitError}</span>
+                        </div>
+                      )}
                       <div className="pt-2">
                         <button
                           type="submit"
