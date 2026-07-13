@@ -44,8 +44,14 @@ export default function Footer({ setTab }: FooterProps) {
         setEmail('');
         setMessage('');
       } else {
-        const errData = await response.json();
-        setSubmitError(errData.message || 'Failed to send your message via FormSubmit. Please try again.');
+        let errMsg = 'Failed to send your message via FormSubmit. Please try again.';
+        try {
+          const errData = await response.json();
+          errMsg = errData.message || errMsg;
+        } catch (_) {
+          // Fallback if response is not JSON
+        }
+        setSubmitError(errMsg);
       }
     } catch (err) {
       console.error('Contact form submission error:', err);

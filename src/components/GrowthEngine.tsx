@@ -43,23 +43,23 @@ const FINGERPRINT_ITEMS = [
 const FAQ_ITEMS = [
   {
     id: 'faq-1',
-    question: 'How does the StackLookup technology detection engine work?',
-    answer: 'StackLookup uses a multi-layered pattern matching model. It analyzes DOM structural markers (like specific element IDs or classes), HTTP response headers (e.g., Server, X-Powered-By), meta attributes, CDN script pathways, cookies, and global JavaScript window namespaces. This ensures highly accurate, multi-angle technology detection.'
+    question: 'How does our website technology analyzer and CMS detector operate?',
+    answer: 'StackLookup functions as a high-fidelity website technology analyzer and CMS detector. Our engine evaluates HTML DOM markers, scripts, meta tags, cookies, and HTTP headers in real-time. This dynamic multi-angle website stack analyzer accurately profiles active site technologies—including e-commerce suites, databases, and page builders like WordPress, Shopify, and Webflow.'
   },
   {
     id: 'faq-2',
-    question: 'How is the Chrome Extension different from the Web Scanner?',
-    answer: 'The browser extension operates right inside your browser window context, meaning it can analyze global namespace parameters (`window.React` or `window.Shopify`) directly. It also includes a custom DevTools panel, letting you inspect local performance indicators, cookies, and headers on-the-fly, while the web scanner provides a broader sandbox query.'
+    question: 'Why use StackLookup as your go-to tech stack checker and web technology checker?',
+    answer: 'As a client-side tech stack checker and web technology checker, StackLookup offers lightning-fast technology lookup capabilities. It detects active JavaScript library scripts, styles, meta tags, and secure CDN origins. It provides robust developer insights without the page weight or privacy risks of standard browser overlays.'
   },
   {
     id: 'faq-3',
-    question: 'Is StackLookup really 100% compliant with Manifest V3?',
-    answer: 'Absolutely. We designed our Chrome Extension using event-driven stateless service workers, strictly avoiding unsafe dynamic script execution. All rules are pre-packaged and evaluated using high-efficiency content scripts, in perfect alignment with Google Chrome Store safety standards.'
+    question: 'Can StackLookup serve as a hosting checker and programming language detector?',
+    answer: 'Yes! StackLookup is an all-in-one website technology detector that includes a fully-functional hosting checker and programming language detector. By evaluating server response headers, DNS record tags, and CDN paths, it identifies exactly where a site is hosted (such as Vercel, Netlify, Cloudflare, or AWS) and identifies underlying programming languages and databases (PHP, Node.js, Python, Ruby).'
   },
   {
     id: 'faq-4',
-    question: 'Is there a limit on how many websites I can analyze?',
-    answer: 'None at all. Our client-side detection engine is structured for infinite local sandboxed queries. You can scan as many websites as you wish entirely free of charge.'
+    question: 'Is this framework detector accurate for single-page applications?',
+    answer: 'Absolutely. Our high-fidelity framework detector identifies client-side UI libraries and frameworks including React, Next.js, Angular, Vue, and Svelte by analyzing client-side window namespaces, build bundle chunk hashes, and React-specific DOM attributes instantly.'
   }
 ];
 
@@ -152,15 +152,15 @@ export default function GrowthEngine({ onStartScan, setTab, setSelectedTechSlug 
         {/* Rounded badge */}
         <span className="inline-flex items-center rounded-full bg-[#EEF4FF] px-3.5 py-1 text-[11px] font-semibold text-[#1A73E8] mb-4 border border-[#1A73E8]/10 tracking-wide uppercase">
           <Cpu className="h-3.5 w-3.5 mr-1.5 text-[#1A73E8]" />
-          The Modern Stack Lookup standard
+          High-Fidelity Website Stack Analyzer
         </span>
 
         <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#202124] mb-4 leading-[1.15]">
-          Discover the technology stack behind <span className="text-[#1A73E8]">any website</span>
+          The Ultimate <span className="text-[#1A73E8]">Website Technology Analyzer</span> & Tech Stack Checker
         </h1>
 
         <p className="text-sm sm:text-base text-[#5F6368] max-w-2xl mx-auto mb-8 leading-relaxed">
-          Instantly reveal frontend components, analytics databases, headless CMS layers, CDNs, and security protocols in milliseconds.
+          Instantly execute a comprehensive web technology checker scan. Our free technology lookup tool uncovers active CMS setups, web frameworks, hosting configurations, and server layers in milliseconds.
         </p>
 
         {/* Premium URL Input Form */}
@@ -306,6 +306,77 @@ export default function GrowthEngine({ onStartScan, setTab, setSelectedTechSlug 
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Structured SEO Semantic Keyword Section */}
+      <section className="bg-gradient-to-br from-[#F8F9FA] to-[#EEF4FF]/10 rounded-2xl border border-[#DADCE0] p-6 sm:p-8 max-w-5xl mx-auto mb-12 shadow-sm">
+        <div className="max-w-3xl mx-auto text-center mb-8">
+          <span className="text-[11px] font-bold text-[#1A73E8] uppercase tracking-wider block mb-2">Complete Technology Lookup Utility</span>
+          <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[#202124] tracking-tight">
+            Comprehensive Web Technology Checker & Website Stack Analyzer
+          </h2>
+          <p className="text-xs sm:text-sm text-[#5F6368] mt-2 leading-relaxed">
+            StackLookup is engineered to deliver enterprise-grade intelligence. Seamlessly audit software stacks, discover backend frameworks, verify host configurations, and identify CMS platforms.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-xl border border-[#DADCE0]/60 p-5 shadow-sm">
+            <h3 className="text-sm font-bold text-[#202124] mb-2 flex items-center gap-2">
+              <span className="w-1.5 h-3 bg-[#1A73E8] rounded-full"></span>
+              Website Technology Detector
+            </h3>
+            <p className="text-xs text-[#5F6368] leading-relaxed">
+              Analyze full target domains instantaneously. Identify underlying databases, marketing tags, page layers, and secure script paths using our unified web technology checker sandboxes.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl border border-[#DADCE0]/60 p-5 shadow-sm">
+            <h3 className="text-sm font-bold text-[#202124] mb-2 flex items-center gap-2">
+              <span className="w-1.5 h-3 bg-[#34A853] rounded-full"></span>
+              CMS & Framework Detector
+            </h3>
+            <p className="text-xs text-[#5F6368] leading-relaxed">
+              Verify platform choices on the fly. Functions as an instant CMS detector for WordPress and Shopify, combined with a modern framework detector targeting React, Next.js, and Vue.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl border border-[#DADCE0]/60 p-5 shadow-sm">
+            <h3 className="text-sm font-bold text-[#202124] mb-2 flex items-center gap-2">
+              <span className="w-1.5 h-3 bg-[#FBBC05] rounded-full"></span>
+              Hosting Checker & Language Detector
+            </h3>
+            <p className="text-xs text-[#5F6368] leading-relaxed">
+              Locate host infrastructure with our automated hosting checker. Scan name pointers and headers to reveal underlying server platforms (AWS, Vercel) and programming languages.
+            </p>
+          </div>
+        </div>
+
+        {/* Quick Links Internal Linking Booster */}
+        <div className="mt-8 pt-6 border-t border-[#DADCE0]/50 text-center">
+          <p className="text-xs text-[#5F6368] font-medium mb-3">Popular search profiles in our technology lookup registry:</p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {[
+              { name: 'Next.js Detector', slug: 'nextjs' },
+              { name: 'WordPress CMS Detector', slug: 'wordpress' },
+              { name: 'Shopify Tech Stack', slug: 'shopify' },
+              { name: 'Cloudflare Proxy Checker', slug: 'cloudflare' },
+              { name: 'Stripe Payment Lookup', slug: 'stripe' },
+              { name: 'Vercel Serverless Hosting', slug: 'vercel-paas' }
+            ].map((link, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setTab('directory');
+                  setSelectedTechSlug(link.slug);
+                }}
+                className="text-xs font-semibold text-[#1A73E8] bg-white hover:bg-[#EEF4FF] border border-[#DADCE0] px-3 py-1.5 rounded-lg transition-colors"
+              >
+                {link.name}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
