@@ -106,13 +106,32 @@ export default function Header({ currentTab, setTab }: HeaderProps) {
 
         {/* Action button */}
         <div className="flex items-center space-x-2">
+          {/* Ko-fi Tip Button */}
+          <a
+            href="https://ko-fi.com/stacklookup"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-1.5 rounded-full bg-[#FF5E5B] px-4 py-2 text-sm font-medium text-white hover:bg-[#FF4E4B] transition-all hover:scale-[1.03] active:scale-95 shadow-sm shadow-[#FF5E5B]/20"
+            id="header-kofi-tip-btn"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="h-4 w-4 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M23.881 8.948c-.773-4.085-4.859-4.582-4.859-4.582H1.441S.122 4.41.018 6.02c-.106 1.611-.018 10.985-.018 10.985s-.208 3.518 3.491 3.518h10.373s3.491.24 3.491-3.518c0 0 3.731-.54 4.58-4.582.85-4.043 1.946-8.475 1.946-8.475zm-5.465 5.166s-.461 1.86-1.866 1.86h-1.44s-1.042.083-1.042-1.011V6.166h4.348s2.003-.105 1.866 4.348c-.066 2.169-.433 3.6-1.866 3.6zM11.685 8.16a2.022 2.022 0 0 0-2.859 0l-.41.41-.41-.41a2.022 2.022 0 1 0-2.859 2.859l3.269 3.269 3.269-3.269a2.022 2.022 0 0 0 0-2.859z" />
+            </svg>
+            <span className="hidden sm:inline">Any Tips</span>
+            <span className="sm:hidden">Tip</span>
+          </a>
+
           <button
             onClick={() => setTab('extension')}
-            className="hidden lg:inline-flex items-center space-x-1.5 rounded-full bg-[#1A73E8] px-4.5 py-2 text-sm font-medium text-white hover:bg-[#1557B0] transition-colors shadow-sm shadow-[#1A73E8]/10"
+            className="hidden lg:inline-flex items-center space-x-1.5 rounded-full bg-[#1A73E8] px-4 py-2 text-sm font-medium text-white hover:bg-[#1557B0] transition-colors shadow-sm shadow-[#1A73E8]/10"
             id="header-install-ext-btn"
           >
             <Chrome className="h-4 w-4" />
-            <span>Extension Developer Hub</span>
+            <span>Extension</span>
           </button>
         </div>
 
