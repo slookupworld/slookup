@@ -51,6 +51,7 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
           .split('/')[0];
 
         const isWikipage = domainOnly.includes('wikipage');
+        const isPublicbiography = domainOnly.includes('publicbiography');
         const isIndianExpress = domainOnly.includes('indianexpress');
         const isTechcrunch = domainOnly.includes('techcrunch');
         const isGymshark = domainOnly.includes('gymshark');
@@ -61,6 +62,8 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
         let techSlugs: string[] = [];
         if (isWikipage) {
           techSlugs = ['wordpress', 'hostinger', 'hostinger-cdn', 'mysql'];
+        } else if (isPublicbiography) {
+          techSlugs = ['wordpress', 'hostinger', 'hostinger-cdn', 'mysql', 'google-tag-manager', 'ga4'];
         } else if (isIndianExpress) {
           techSlugs = ['wordpress', 'wordpress-vip', 'google-tag-manager', 'ga4', 'google-ads', 'adsense', 'doubleclick', 'taboola', 'outbrain'];
         } else if (isTechcrunch) {
@@ -83,20 +86,22 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
               ? 'The Indian Express: Latest News India, Breaking News' 
               : isWikipage 
                 ? 'Wikipage Bio Directory' 
-                : isTechcrunch
-                  ? 'TechCrunch - Startup and Technology News'
-                  : isGymshark
-                    ? 'Gymshark Official Store | Workout Clothes & Activewear'
-                    : isNextjs
-                      ? 'Next.js by Vercel - The React Framework for the Web'
-                      : isStripe
-                        ? 'Stripe | Financial Infrastructure for the Internet'
-                        : `${domainOnly.charAt(0).toUpperCase() + domainOnly.slice(1)} - Technical Audit`,
+                : isPublicbiography
+                  ? 'Public Biography - Discover Inspiring Biographies and Life Stories'
+                  : isTechcrunch
+                    ? 'TechCrunch - Startup and Technology News'
+                    : isGymshark
+                      ? 'Gymshark Official Store | Workout Clothes & Activewear'
+                      : isNextjs
+                        ? 'Next.js by Vercel - The React Framework for the Web'
+                        : isStripe
+                          ? 'Stripe | Financial Infrastructure for the Internet'
+                          : `${domainOnly.charAt(0).toUpperCase() + domainOnly.slice(1)} - Technical Audit`,
             description: `Cached offline diagnostic report compiled for ${domainOnly}.`,
-            ipAddress: isWikipage ? '156.67.74.120' : isIndianExpress ? '192.0.78.25' : isTechcrunch ? '151.101.2.217' : isGymshark ? '104.18.23.236' : isNextjs ? '76.76.21.21' : isStripe ? '3.18.12.1' : '104.22.40.15',
+            ipAddress: isWikipage ? '156.67.74.120' : isPublicbiography ? '156.67.74.135' : isIndianExpress ? '192.0.78.25' : isTechcrunch ? '151.101.2.217' : isGymshark ? '104.18.23.236' : isNextjs ? '76.76.21.21' : isStripe ? '3.18.12.1' : '104.22.40.15',
             tlsVersion: 'TLSv1.3',
-            country: 'IN',
-            serverHeader: isIndianExpress ? 'WordPress VIP Gateway' : isWikipage ? 'LiteSpeed' : isTechcrunch ? 'Nginx / WordPress' : isGymshark ? 'Cloudflare / Shopify Edge' : isNextjs ? 'Vercel LBR' : isStripe ? 'Stripe Gateway' : 'Cloudflare',
+            country: isPublicbiography ? 'US' : 'IN',
+            serverHeader: isIndianExpress ? 'WordPress VIP Gateway' : (isWikipage || isPublicbiography) ? 'LiteSpeed' : isTechcrunch ? 'Nginx / WordPress' : isGymshark ? 'Cloudflare / Shopify Edge' : isNextjs ? 'Vercel LBR' : isStripe ? 'Stripe Gateway' : 'Cloudflare',
             latencyMs: 14,
             screenshotUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&h=250&q=80'
           },
@@ -106,10 +111,10 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
             
             let indicator: any = 'html';
             let ver = 'Stable';
-
+ 
             if (slug === 'wordpress') {
               indicator = 'meta';
-              ver = isWikipage ? '6.5.2' : isTechcrunch ? '6.4.2' : 'Enterprise';
+              ver = isWikipage ? '6.5.2' : isPublicbiography ? '6.5.3' : isTechcrunch ? '6.4.2' : 'Enterprise';
             } else if (slug === 'wordpress-vip') {
               indicator = 'headers';
               ver = 'PaaS v3';

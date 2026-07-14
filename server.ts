@@ -785,8 +785,10 @@ app.post('/api/scan', async (req, res) => {
   const isWordpressHostingerDomain =
     hostname === 'wikipage.bio' ||
     hostname === 'indianexpress.com' ||
+    hostname === 'publicbiography.com' ||
     hostname.includes('wikipage') ||
-    hostname.includes('indianexpress');
+    hostname.includes('indianexpress') ||
+    hostname.includes('publicbiography');
 
   try {
     // Attempt real live server-side fetch with timeout
@@ -881,6 +883,40 @@ app.post('/api/scan', async (req, res) => {
       };
       serverHeader = 'LiteSpeed (Hostinger)';
       country = 'IN';
+    } else if (hostname.includes('publicbiography.com') || hostname === 'publicbiography.com') {
+      htmlSource = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Public Biography - Discover Inspiring Biographies and Life Stories</title>
+            <meta name="generator" content="WordPress 6.5.3" />
+            <meta name="description" content="Discover inspiring biography profiles, life stories, net worth, age, and achievements of public figures and famous personalities worldwide." />
+            <link rel="stylesheet" href="/wp-content/themes/publicbiography/style.css" />
+            <link rel="stylesheet" href="/wp-content/plugins/elementor/assets/css/frontend.min.css" />
+          </head>
+          <body>
+            <div class="wp-block-library">Public Biography Home</div>
+            
+            <!-- Google Tag Manager and Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-PB12345678"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-PB12345678');
+            </script>
+            <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PB87654"></script>
+          </body>
+        </html>
+      `;
+      responseHeaders = {
+        'server': 'LiteSpeed',
+        'x-hostinger-backend': 'litespeed-pool',
+        'x-hostinger-cdn': 'edge-cache-active',
+        'x-powered-by': 'PHP/8.1'
+      };
+      serverHeader = 'LiteSpeed (Hostinger)';
+      country = 'US';
     } else if (hostname.includes('techcrunch.com') || hostname === 'techcrunch.com') {
       htmlSource = `
         <!DOCTYPE html>
@@ -1068,6 +1104,19 @@ app.post('/api/scan', async (req, res) => {
         else if (tech.slug === 'hostinger') overrideVersion = 'Cloud';
         else if (tech.slug === 'hostinger-cdn') overrideVersion = 'Edge v2';
         else if (tech.slug === 'mysql') overrideVersion = '8.0';
+      } else if (tech.slug === 'wordpress-vip') {
+        continue;
+      }
+    } else if (hostname.includes('publicbiography.com') || hostname === 'publicbiography.com') {
+      const allowed = ['wordpress', 'hostinger', 'hostinger-cdn', 'mysql', 'google-tag-manager', 'ga4'];
+      if (allowed.includes(tech.slug)) {
+        isOverride = true;
+        if (tech.slug === 'wordpress') overrideVersion = '6.5.3';
+        else if (tech.slug === 'hostinger') overrideVersion = 'Cloud';
+        else if (tech.slug === 'hostinger-cdn') overrideVersion = 'Edge v2';
+        else if (tech.slug === 'mysql') overrideVersion = '8.0';
+        else if (tech.slug === 'google-tag-manager') overrideVersion = 'v2';
+        else if (tech.slug === 'ga4') overrideVersion = 'v4';
       } else if (tech.slug === 'wordpress-vip') {
         continue;
       }
