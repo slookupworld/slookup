@@ -170,6 +170,26 @@ export const TECHNOLOGY_DICTIONARY: TechnologyProfile[] = [
     }
   },
   {
+    slug: 'paypal',
+    name: 'PayPal',
+    category: 'Utility',
+    iconName: 'CreditCard',
+    description: 'A global pioneer in online payment processing, enabling businesses and individuals to send and receive money securely worldwide.',
+    confidence: 100,
+    website: 'https://paypal.com',
+    advantages: [
+      'Incredibly high global consumer trust and brand recognition',
+      'One-touch checkout options for higher conversion rates',
+      'Robust buyer and seller protection mechanisms',
+      'Comprehensive suite of SDKs and robust developer tools'
+    ],
+    alternatives: ['stripe', 'adyen', 'braintree'],
+    patterns: {
+      scripts: ['paypal\\.com/sdk/js', 'www\\.paypalobjects\\.com'],
+      html: ['paypal-button', 'paypal-container', 'www\\.paypalobjects\\.com', 'paypal\\.com/sdk/js']
+    }
+  },
+  {
     slug: 'hubspot',
     name: 'HubSpot',
     category: 'Marketing',
