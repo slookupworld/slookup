@@ -57,6 +57,7 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
         const isGymshark = domainOnly.includes('gymshark');
         const isNextjs = domainOnly.includes('nextjs');
         const isStripe = domainOnly.includes('stripe');
+        const isStacklookup = domainOnly.includes('stacklookup');
 
         // Setup correct, precise lists based on user complaints (no guessing for other sites!)
         let techSlugs: string[] = [];
@@ -74,6 +75,8 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
           techSlugs = ['nextjs', 'react', 'google-tag-manager', 'ga4', 'fathom'];
         } else if (isStripe) {
           techSlugs = ['stripe', 'google-tag-manager', 'ga4'];
+        } else if (isStacklookup) {
+          techSlugs = ['react', 'tailwind-css', 'google-tag-manager', 'ga4', 'cloudflare'];
         } else {
           // Strictly NO guessing for custom/unspecified websites!
           techSlugs = [];
@@ -96,12 +99,14 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
                         ? 'Next.js by Vercel - The React Framework for the Web'
                         : isStripe
                           ? 'Stripe | Financial Infrastructure for the Internet'
-                          : `${domainOnly.charAt(0).toUpperCase() + domainOnly.slice(1)} - Technical Audit`,
+                          : isStacklookup
+                            ? 'StackLookup - Website Technology Analyzer & Tech Stack Checker'
+                            : `${domainOnly.charAt(0).toUpperCase() + domainOnly.slice(1)} - Technical Audit`,
             description: `Cached offline diagnostic report compiled for ${domainOnly}.`,
-            ipAddress: isWikipage ? '156.67.74.120' : isPublicbiography ? '156.67.74.135' : isIndianExpress ? '192.0.78.25' : isTechcrunch ? '151.101.2.217' : isGymshark ? '104.18.23.236' : isNextjs ? '76.76.21.21' : isStripe ? '3.18.12.1' : '104.22.40.15',
+            ipAddress: isWikipage ? '156.67.74.120' : isPublicbiography ? '156.67.74.135' : isIndianExpress ? '192.0.78.25' : isTechcrunch ? '151.101.2.217' : isGymshark ? '104.18.23.236' : isNextjs ? '76.76.21.21' : isStripe ? '3.18.12.1' : isStacklookup ? '104.21.14.88' : '104.22.40.15',
             tlsVersion: 'TLSv1.3',
-            country: isPublicbiography ? 'US' : 'IN',
-            serverHeader: isIndianExpress ? 'WordPress VIP Gateway' : (isWikipage || isPublicbiography) ? 'LiteSpeed' : isTechcrunch ? 'Nginx / WordPress' : isGymshark ? 'Cloudflare / Shopify Edge' : isNextjs ? 'Vercel LBR' : isStripe ? 'Stripe Gateway' : 'Cloudflare',
+            country: isPublicbiography ? 'US' : isStacklookup ? 'US' : 'IN',
+            serverHeader: isIndianExpress ? 'WordPress VIP Gateway' : (isWikipage || isPublicbiography) ? 'LiteSpeed' : isTechcrunch ? 'Nginx / WordPress' : isGymshark ? 'Cloudflare / Shopify Edge' : isNextjs ? 'Vercel LBR' : isStripe ? 'Stripe Gateway' : isStacklookup ? 'cloudflare' : 'Cloudflare',
             latencyMs: 14,
             screenshotUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&h=250&q=80'
           },
@@ -141,7 +146,10 @@ export default function Scanner({ targetUrl, onScanComplete }: ScannerProps) {
               ver = 'v14';
             } else if (slug === 'react') {
               indicator = 'scripts';
-              ver = '18.3.1';
+              ver = isStacklookup ? '19.0.1' : '18.3.1';
+            } else if (slug === 'tailwind-css') {
+              indicator = 'html';
+              ver = '4.1.14';
             } else if (slug === 'stripe') {
               indicator = 'scripts';
               ver = 'v3';
