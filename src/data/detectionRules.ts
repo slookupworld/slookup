@@ -948,6 +948,250 @@ export const TECHNOLOGY_DICTIONARY: TechnologyProfile[] = [
       scripts: ['widgets\\.outbrain\\.com/outbrain\\.js'],
       html: ['outbrain-widget', 'widgets\\.outbrain\\.com', 'OB_Outline', 'OB_platform', 'outbrain\\.com/']
     }
+  },
+  {
+    slug: 'vite',
+    name: 'Vite',
+    category: 'Utility',
+    iconName: 'Cpu',
+    description: 'A modern, blazing fast frontend build tool and development server that powers modern single-page web applications.',
+    confidence: 100,
+    website: 'https://vite.dev',
+    advantages: [
+      'Near-instantaneous Hot Module Replacement (HMR) and server start',
+      'Out-of-the-box support for TypeScript, JSX, CSS modules, and assets',
+      'Highly optimized roll-up production bundle pipelines'
+    ],
+    alternatives: ['webpack', 'parcel', 'turbopack'],
+    patterns: {
+      html: ['/vite\\.svg', '@vite/client', 'vite-plugin'],
+      scripts: ['/vite\\.svg', '@vite/client', '\\bvite\\b']
+    }
+  },
+  {
+    slug: 'jquery',
+    name: 'jQuery',
+    category: 'Frontend',
+    iconName: 'Code2',
+    description: 'A legendary fast, small, and feature-rich JavaScript library that revolutionized DOM traversal and event handling.',
+    confidence: 95,
+    website: 'https://jquery.com',
+    advantages: [
+      'Extremely simple and intuitive syntax for HTML DOM manipulation',
+      'Broad, mature ecosystem of plugins and legacy enterprise wrappers',
+      'Handles multi-browser visual animations and AJAX requests seamlessly'
+    ],
+    alternatives: ['react', 'vue', 'alpinejs'],
+    patterns: {
+      html: ['jquery\\.min\\.js', 'jquery\\.js', '\\bjQuery\\b'],
+      scripts: ['jquery']
+    }
+  },
+  {
+    slug: 'bootstrap',
+    name: 'Bootstrap',
+    category: 'Frontend',
+    iconName: 'Palette',
+    description: 'A widely popular, powerful front-end open-source toolkit for building responsive, mobile-first layouts.',
+    confidence: 90,
+    website: 'https://getbootstrap.com',
+    advantages: [
+      'Durable and clean pre-styled grid systems for rapid layout assembly',
+      'Extensive suite of pre-packaged responsive UI components',
+      'Incredibly strong community and abundant theme resources'
+    ],
+    alternatives: ['tailwind-css', 'bulma', 'foundation'],
+    patterns: {
+      html: ['bootstrap\\.min\\.css', 'bootstrap\\.css', 'class="[^"]*(container|row|col-|btn-|navbar-brand|carousel|modal-|form-group)\\b']
+    }
+  },
+  {
+    slug: 'svelte',
+    name: 'Svelte',
+    category: 'Frontend',
+    iconName: 'Code2',
+    description: 'A radical new approach to building user interfaces that compiles components down to tiny, framework-less vanilla JS at build-time.',
+    confidence: 100,
+    website: 'https://svelte.dev',
+    advantages: [
+      'No virtual DOM overhead, delivering superior execution speeds',
+      'Requires significantly less boilerplate code from developers',
+      'Truly localized reactive variable bindings and modular styles'
+    ],
+    alternatives: ['react', 'vue', 'angular'],
+    patterns: {
+      html: ['svelte-\\w{6,12}', 'svelte-announcer', '__sveltekit'],
+      scripts: ['svelte']
+    }
+  },
+  {
+    slug: 'nuxt',
+    name: 'Nuxt.js',
+    category: 'Frontend',
+    iconName: 'Code2',
+    description: 'An intuitive, enterprise-ready open-source framework built on top of Vue.js for server-side rendering and static site generation.',
+    confidence: 100,
+    website: 'https://nuxt.com',
+    advantages: [
+      'Excellent SEO via robust server-side rendering and static delivery',
+      'Automatic filesystem-based routing and page layout engines',
+      'Optimized asset compilation and directory structures'
+    ],
+    alternatives: ['nextjs', 'remix', 'gatsby'],
+    patterns: {
+      html: ['id="__nuxt"', 'window\\.__NUXT__', 'data-n-head'],
+      headers: { 'X-Powered-By': 'Nuxt' }
+    }
+  },
+  {
+    slug: 'alpinejs',
+    name: 'Alpine.js',
+    category: 'Frontend',
+    iconName: 'Code2',
+    description: 'A rugged, minimal tool for composing reactive behavior directly in your HTML markup, offering the convenience of Vue/React at much lower cost.',
+    confidence: 95,
+    website: 'https://alpinejs.dev',
+    advantages: [
+      'Extremely lightweight footprint (under 15KB) preventing bloated pages',
+      'No build step required — write modern reactive expressions directly in tags',
+      'Bridges the gap between simple static templates and heavy frameworks'
+    ],
+    alternatives: ['jquery', 'vue', 'react'],
+    patterns: {
+      html: ['x-data\\s*=', 'x-init\\s*=', 'x-show\\s*=']
+    }
+  },
+  {
+    slug: 'laravel',
+    name: 'Laravel',
+    category: 'Infrastructure',
+    iconName: 'Server',
+    description: 'A highly elegant, expressive PHP web application framework built for rapid back-end prototyping and enterprise scaling.',
+    confidence: 100,
+    website: 'https://laravel.com',
+    advantages: [
+      'Stellar, expressive object-relational mapping (Eloquent ORM)',
+      'Highly robust pre-built queues, authentication, and routing systems',
+      'Extensive modern tooling ecosystem including Forge, Vapor, and Nova'
+    ],
+    alternatives: ['django', 'rails', 'express'],
+    patterns: {
+      cookies: ['laravel_session', 'XSRF-TOKEN'],
+      headers: { 'X-Powered-By': 'Laravel' }
+    }
+  },
+  {
+    slug: 'django',
+    name: 'Django',
+    category: 'Infrastructure',
+    iconName: 'Server',
+    description: 'A high-level Python web framework that encourages rapid development and clean, pragmatic architectural design with "batteries included".',
+    confidence: 100,
+    website: 'https://djangoproject.com',
+    advantages: [
+      'Comprehensive suite of built-in components including a secure admin panel',
+      'Extremely safe defaults preventing SQL injection, CSRF, and XSS',
+      'Massive community with plugins for scientific computation and AI systems'
+    ],
+    alternatives: ['laravel', 'rails', 'express'],
+    patterns: {
+      cookies: ['csrftoken'],
+      html: ['csrfmiddlewaretoken']
+    }
+  },
+  {
+    slug: 'rails',
+    name: 'Ruby on Rails',
+    category: 'Infrastructure',
+    iconName: 'Server',
+    description: 'A highly productive server-side web application framework written in Ruby that emphasizes convention over configuration.',
+    confidence: 100,
+    website: 'https://rubyonrails.org',
+    advantages: [
+      'Incredible speed of development for MVPs and startup platforms',
+      'Cohesive, strict code patterns that ensure readable team contributions',
+      'Robust default caching, asset pipelines, and database migrations'
+    ],
+    alternatives: ['laravel', 'django', 'express'],
+    patterns: {
+      html: ['csrf-param', 'csrf-token', 'data-turbo-track']
+    }
+  },
+  {
+    slug: 'gatsby',
+    name: 'Gatsby',
+    category: 'Frontend',
+    iconName: 'Code2',
+    description: 'A static site generator built on React and GraphQL that delivers blazing fast, highly secure, and SEO-optimized web experiences.',
+    confidence: 100,
+    website: 'https://gatsbyjs.com',
+    advantages: [
+      'Combines multiple data sources into a single unified GraphQL schema',
+      'Extremely optimized static outputs serving assets instantly from CDNs',
+      'Enormous collection of plugins for imagery, markdowns, and head scripts'
+    ],
+    alternatives: ['nextjs', 'astro', 'hugo'],
+    patterns: {
+      html: ['id="___gatsby"', 'id="gatsby-focus-wrapper"'],
+      meta: { 'generator': 'Gatsby.*' }
+    }
+  },
+  {
+    slug: 'webflow',
+    name: 'Webflow',
+    category: 'CMS',
+    iconName: 'FileText',
+    description: 'A cloud-based website builder and content management system that allows designers to build responsive sites with visual canvas tools.',
+    confidence: 100,
+    website: 'https://webflow.com',
+    advantages: [
+      'Provides a visual canvas that directly outputs clean, semantic code',
+      'Built-in highly performant database manager and hosting systems',
+      'Allows ultra-rich custom interactions and animations without coding'
+    ],
+    alternatives: ['wordpress', 'squarespace', 'wix'],
+    patterns: {
+      html: ['data-wf-page', 'data-wf-site'],
+      meta: { 'generator': 'Webflow' }
+    }
+  },
+  {
+    slug: 'wix',
+    name: 'Wix',
+    category: 'CMS',
+    iconName: 'FileText',
+    description: 'A leading SaaS-based cloud development platform that provides drag-and-drop website building tools for individuals and small businesses.',
+    confidence: 100,
+    website: 'https://wix.com',
+    advantages: [
+      'Incredibly easy drag-and-drop website assembly for absolute beginners',
+      'Huge variety of pre-styled responsive layouts and custom media galleries',
+      'Fully managed ecosystem handles backups, hosting, security, and DNS'
+    ],
+    alternatives: ['squarespace', 'wordpress', 'shopify'],
+    patterns: {
+      html: ['wix-image', 'wix-site', 'wixlabs'],
+      meta: { 'generator': 'Wix\\.com' }
+    }
+  },
+  {
+    slug: 'squarespace',
+    name: 'Squarespace',
+    category: 'CMS',
+    iconName: 'FileText',
+    description: 'A premium, design-centric SaaS website builder and blogging platform best known for its polished, modern design templates.',
+    confidence: 100,
+    website: 'https://squarespace.com',
+    advantages: [
+      'Beautifully curated, award-winning templates geared for creatives',
+      'Integrated e-commerce, reservation scheduling, and customer portfolios',
+      'Consistently reliable and fast hosting with zero server maintenance'
+    ],
+    alternatives: ['wix', 'webflow', 'wordpress'],
+    patterns: {
+      html: ['Squarespace\\.onInitialize', 'static1\\.squarespace\\.com'],
+      cookies: ['SS_MID', 'SS_ANALYTICS_ID']
+    }
   }
 ];
 
