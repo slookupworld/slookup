@@ -1,6 +1,6 @@
 {
   "name": "Remix: StackLookup",
-  "description": "Discover the technologies behind any website. A premium, ultra-fast web technology profiler and Chrome DevTools extension ecosystem.",
+  "description": "Discover the technologies behind any website. Free website technology analyzer, CMS detector, and tech stack profiler.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

@@ -70,19 +70,19 @@ export default function SeoHub({ onScanTech, selectedTechSlug, setSelectedTechSl
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://stacklookup.net"
+              "item": "https://stacklookup.net/"
             },
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "Detector",
-              "item": "https://stacklookup.net/detector"
+              "name": "Technology Directory",
+              "item": "https://stacklookup.net/?tab=directory"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": activeTech.name,
-              "item": `https://stacklookup.net/detector/${activeTech.slug}`
+              "item": `https://stacklookup.net/?tab=directory&tech=${activeTech.slug}`
             }
           ]
         }

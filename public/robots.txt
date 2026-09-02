@@ -1,43 +1,48 @@
 # ==========================================
-# Robots.txt for StackLookup.net
-# Optimizing Crawler Indexing, AEO, and GEO
+# Robots.txt for StackLookup (https://stacklookup.net)
+# Optimized for Googlebot, Bingbot, AI Engines (AEO/GEO)
 # ==========================================
 
 User-agent: *
 Allow: /
-Disallow: /api/scan # Keep backend scanning API isolated from generic scrapers
-Disallow: /api/simulate # Keep sandbox emulator isolated from generic scrapers
+Disallow: /api/scan
+Disallow: /api/simulate
 
-# Explicitly Welcome and Guide AI Engines for Answers and Chat Citations (AEO/GEO)
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.svg$
+Disallow: /api/scan
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /public/
+Allow: /favicon.png
+Allow: /og-image.png
+
 User-agent: Google-Extended
 Allow: /
-Allow: /directory
-Allow: /blog
-Allow: /about
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/scan
 
 User-agent: GPTBot
 Allow: /
-Allow: /directory
-Allow: /blog
-Allow: /about
 
 User-agent: ClaudeBot
 Allow: /
-Allow: /directory
-Allow: /blog
-Allow: /about
 
 User-agent: PerplexityBot
 Allow: /
-Allow: /directory
-Allow: /blog
-Allow: /about
 
-User-agent: Applebot-Extended
+User-agent: Applebot
 Allow: /
-Allow: /directory
-Allow: /blog
-Allow: /about
 
-# Declare Site XML Map
+# Canonical XML Sitemap
 Sitemap: https://stacklookup.net/sitemap.xml
+

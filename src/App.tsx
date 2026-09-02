@@ -18,32 +18,60 @@ import { ScanResult, WebpageMetadata, TechnologyProfile } from './types';
 import { PRESET_WEBSITES, runDetection, TECHNOLOGY_DICTIONARY } from './data/detectionRules';
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<string>('home');
-  const [scannedUrl, setScannedUrl] = useState<string>('');
+  // Parse initial query parameters from URL for direct deep-linking and indexing
+  const getInitialState = () => {
+    if (typeof window === 'undefined') return { tab: 'home', tech: undefined, query: '' };
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab') || 'home';
+    const techParam = params.get('tech') || undefined;
+    const queryParam = params.get('search') || params.get('url') || '';
+    return { tab: tabParam, tech: techParam, query: queryParam };
+  };
+
+  const initial = getInitialState();
+  const [currentTab, setCurrentTab] = useState<string>(initial.tab);
+  const [scannedUrl, setScannedUrl] = useState<string>(initial.query);
   const [currentScanResult, setCurrentScanResult] = useState<ScanResult | null>(null);
   
   // Track selected technology for Programmatic SEO pages
-  const [selectedTechSlug, setSelectedTechSlug] = useState<string | undefined>(undefined);
+  const [selectedTechSlug, setSelectedTechSlug] = useState<string | undefined>(initial.tech);
 
-  // Dynamic Page Title Updater for SEO, AEO and Generative Engines
+  // Sync state to URL and manage Document Title for SEO/AEO
   React.useEffect(() => {
-    let title = 'StackLookup - Web Technology Profiler & CMS Detector';
+    let title = 'StackLookup: Website Technology Analyzer, CMS & Tech Stack Checker | Free Instant Lookup';
+    
     if (currentTab === 'extension') {
       title = 'Chrome Extension Developer Hub - StackLookup';
     } else if (currentTab === 'directory') {
-      title = selectedTechSlug 
-        ? `${selectedTechSlug.charAt(0).toUpperCase() + selectedTechSlug.slice(1)} Technology Profile | StackLookup`
-        : 'Web Technology Directory & Fingerprint Classifications - StackLookup';
+      if (selectedTechSlug) {
+        const matchedTech = TECHNOLOGY_DICTIONARY.find(t => t.slug === selectedTechSlug);
+        const techName = matchedTech ? matchedTech.name : (selectedTechSlug.charAt(0).toUpperCase() + selectedTechSlug.slice(1));
+        title = `${techName} Detection & Tech Profile | Free StackLookup Analyzer`;
+      } else {
+        title = 'Web Technology Directory & CMS Classifications - StackLookup';
+      }
+    } else if (currentTab === 'compare') {
+      title = 'Compare Website Tech Stacks with AI Architecture Reports | StackLookup';
     } else if (currentTab === 'blog') {
-      title = 'Latest Web Development & Security Insights - StackLookup Blog';
+      title = 'Web Technology, CMS & Performance Engineering Insights | StackLookup Blog';
     } else if (currentTab === 'about') {
-      title = 'About StackLookup - Our Technology Discovery Mission';
+      title = 'About StackLookup - Website Technology Detection Engine';
     } else if (currentTab === 'dashboard' && currentScanResult) {
       const targetUrl = currentScanResult.metadata?.url || '';
       const displayUrl = targetUrl.replace('https://', '').replace('http://', '').split('/')[0];
-      title = displayUrl ? `Technology Stack Analysis for ${displayUrl} | StackLookup` : 'Technology Stack Analysis | StackLookup';
+      title = displayUrl ? `Tech Stack Analysis for ${displayUrl} | StackLookup` : 'Website Tech Stack Analysis | StackLookup';
     }
     document.title = title;
+
+    // Update URL query parameters without reloading
+    if (typeof window !== 'undefined' && window.history) {
+      const params = new URLSearchParams();
+      if (currentTab !== 'home') params.set('tab', currentTab);
+      if (currentTab === 'directory' && selectedTechSlug) params.set('tech', selectedTechSlug);
+      
+      const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+      window.history.replaceState({}, '', newUrl);
+    }
   }, [currentTab, selectedTechSlug, currentScanResult]);
 
   // Triggered when a scan is launched from the homepage or directory

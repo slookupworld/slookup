@@ -93,7 +93,110 @@ export default function TechLogo({ slug, className = "h-5 w-5" }: TechLogoProps)
           <circle cx="64" cy="68" r="10" fill="white" stroke="#FF7A59" strokeWidth="6" />
         </svg>
       );
-    case 'vue':
+    case 'svelte':
+    case 'sveltekit':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M107 43.5c-4.8-13.8-17.5-23.7-32.3-25.1-4.8-.4-9.7.2-14.3 1.9-4 1.5-8.2 4.4-11.8 7.3l-18 15.3c-7.7 6.6-12.7 15.4-14.1 25.1-1.8 12.3 2.5 24.3 11.2 32.5 4.8 4.5 10.9 7.7 17.4 9 3.5.7 7.2.7 10.7 0 4.1-.8 7.9-2.6 11.4-4.8l18.5-12.5c6.3-4.3 11-10.4 13.5-17.4 3.1-8.7 2.4-18.4-2.2-26.3z" fill="#FF3E00" />
+          <path d="M57.6 100.2c-5.8 0-11.3-2.6-14.9-7-3.8-4.7-5.1-11-3.6-16.8.8-3 2.3-5.7 4.5-7.9l18-15.3c3.2-2.7 6.9-4.8 11-5.9 4-.9 8.2-.8 12.1.5 5 1.7 9.1 5.3 11.4 10 1.9 3.8 2.3 8.2 1.3 12.3-1.1 4.7-3.9 8.7-7.8 11.3L69.1 94c-3.4 2.3-7.4 3.7-11.5 6.2z" fill="white" />
+        </svg>
+      );
+    case 'astro':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#0C0F14" />
+          <path d="M44 94c-2-2-4-5-4-9 0-7 6-12 12-12 4 0 7 2 9 4l15-28h-9c-2 0-3-1-3-3s1-3 3-3h15c2 0 3 1 3 3l-1 2-25 47c-2 4-6 6-10 6-3 0-5-1-7-3z" fill="#FF5D01" />
+          <path d="M84 94c2-2 4-5 4-9 0-7-6-12-12-12-4 0-7 2-9 4l-15-28h9c2 0 3-1 3-3s-1-3-3-3H46c-2 0-3 1-3 3l1 2 25 47c2 4 6 6 10 6 3 0 5-1 7-3z" fill="#BC52EE" />
+        </svg>
+      );
+    case 'remix':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#121212" />
+          <path d="M36 36h28c14 0 24 9 24 22 0 9-5 16-13 20l17 22H76L61 80H50v20H36V36zm14 32h14c6 0 10-4 10-10s-4-10-10-10H50v20z" fill="white" />
+        </svg>
+      );
+    case 'jquery':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#0769AD" />
+          <path d="M64 24c22 0 40 18 40 40s-18 40-40 40c-12 0-23-5-30-14l10-8c5 6 13 10 20 10 15 0 28-13 28-28s-13-28-28-28c-10 0-19 5-24 13l-10-6C38 31 50 24 64 24z" fill="#78CFF5" />
+          <path d="M42 64c0-4 3-7 7-7s7 3 7 7-3 7-7 7-7-3-7-7z" fill="white" />
+        </svg>
+      );
+    case 'bootstrap':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#7952B3" />
+          <path d="M46 36h26c11 0 18 6 18 14 0 6-3 10-9 12 8 2 12 7 12 14 0 9-8 16-20 16H46V36zm13 20h12c4 0 7-2 7-6s-3-6-7-6H59v12zm0 24h14c5 0 8-2 8-7s-3-7-8-7H59v14z" fill="white" />
+        </svg>
+      );
+    case 'woocommerce':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#96588A" />
+          <path d="M30 46h16l10 28 10-28h16l10 28 10-28h16l-18 48H84L74 66 64 94H48L30 46z" fill="white" />
+        </svg>
+      );
+    case 'fastly':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#FF282D" />
+          <path d="M44 38h40v14H44V38zm0 22h32v14H44V60zm0 22h24v14H44V82z" fill="white" />
+        </svg>
+      );
+    case 'nginx':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#009639" />
+          <path d="M42 36l22 28v28H50V56L42 46v46H30V36h12zm44 0h12v56H86L64 64v36h-8V36h12l22 28V36h8z" fill="white" />
+        </svg>
+      );
+    case 'apache':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#D22128" />
+          <path d="M64 24l28 80H78l-6-18H56l-6 18H36l28-80zm5 48L64 48l-5 24h10z" fill="white" />
+        </svg>
+      );
+    case 'litespeed':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#0066CC" />
+          <path d="M68 28L36 68h24l-4 32 36-44H68l4-28z" fill="#00FFCC" />
+        </svg>
+      );
+    case 'php':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#777BB4" />
+          <ellipse cx="64" cy="64" rx="46" ry="26" fill="#4F5B93" />
+          <text x="64" y="73" fill="white" fontSize="26" fontWeight="bold" fontFamily="monospace" textAnchor="middle">PHP</text>
+        </svg>
+      );
+    case 'nodejs':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#339933" />
+          <path d="M64 28l32 18v36L64 100 32 82V46l32-18zm0 10L40 52v24l24 14 24-14V52L64 38z" fill="white" />
+        </svg>
+      );
+    case 'sentry':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#362D59" />
+          <path d="M78 36c14 8 20 25 14 40-5 13-17 22-31 24l-3-8c10-2 19-8 23-18 4-11 0-24-10-30L78 36z" fill="#FB4226" />
+          <circle cx="56" cy="68" r="8" fill="#FB4226" />
+        </svg>
+      );
+    case 'vite':
+      return (
+        <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="128" rx="28" fill="#646CFF" />
+          <path d="M96 32L64 96 32 32h64z" fill="#FFD62E" />
+          <path d="M64 32l16 32-16 32-16-32 16-32z" fill="#BD34FE" />
+        </svg>
+      );
       return (
         <svg viewBox="0 0 128 128" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M64 110L114 23.4H93.1L64 73.7L34.9 23.4H14L64 110Z" fill="#41B883" />
